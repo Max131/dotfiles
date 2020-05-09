@@ -8,4 +8,4 @@ My dot files of:
 - jgmenu
 
 
-![Screenshot](Screenshot_ 2020-05-09_ 03.26.26.png)
+![Screenshot](Screenshot_2020-05-09_ 03.26.26.png)
