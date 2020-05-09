@@ -1,0 +1,4 @@
+Navegador,firefox,firefox
+Administrador de archivos,thunar,system-file-manager
+Terminal,termite,utilities-terminal
+^sep()
