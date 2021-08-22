@@ -42,8 +42,7 @@
        following: 'Mouse' - where the mouse is, or
                   'Active' - where the active window is -->
   <theme>
-    <!-- <cornerRadius menu="yes">4</cornerRadius>-->
-    <name>Arc-Dark-solid</name>
+    <name>Arc-Dark</name>
     <titleLayout>NLIMC</titleLayout>
     <!--       available characters are NDSLIMC, each can occur at most once.
       N: window icon
@@ -57,7 +56,7 @@
     <keepBorder>no</keepBorder>
     <animateIconify>yes</animateIconify>
     <font place="ActiveWindow">
-      <name>Roboto Condensed,</name>
+      <name>Roboto</name>
       <size>10</size>
       <!-- font size in points -->
       <weight>Normal</weight>
@@ -66,7 +65,7 @@
     </font>
     <!-- 'italic' or 'normal' -->
     <font place="InactiveWindow">
-      <name>Roboto Condensed,</name>
+      <name>Roboto</name>
       <size>10</size>
       <!-- font size in points -->
       <weight>Normal</weight>
@@ -75,8 +74,8 @@
     </font>
     <!-- 'italic' or 'normal' -->
     <font place="MenuHeader">
-      <name>Roboto Condensed,</name>
-      <size>9</size>
+      <name>Roboto</name>
+      <size>10</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
@@ -84,8 +83,8 @@
     </font>
     <!-- 'italic' or 'normal' -->
     <font place="MenuItem">
-      <name>Roboto Condensed,</name>
-      <size>9</size>
+      <name>Roboto</name>
+      <size>10</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
@@ -93,21 +92,21 @@
     </font>
     <!-- 'italic' or 'normal' -->
     <font place="ActiveOnScreenDisplay">
-      <name>sans</name>
-      <size>9</size>
+      <name>Roboto</name>
+      <size>10</size>
       <!-- font size in points -->
-      <weight>Bold</weight>
+      <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
       <slant>Normal</slant>
     </font>
     <!-- 'italic' or 'normal' -->
     <font place="InactiveOnScreenDisplay">
-      <name>sans</name>
-      <size>9</size>
+      <name>Roboto</name>
+      <size>10</size>
       <!-- font size in points -->
-      <weight>bold</weight>
+      <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
-      <slant>normal</slant>
+      <slant>Normal</slant>
     </font>
   </theme>
   <!-- 'italic' or 'normal' -->
@@ -125,13 +124,17 @@
     <names>
       <name>OBox</name>
     </names>
+    <!-- set names up here if you want to, like this:
+    <name>desktop 1</name>
+    <name>desktop 2</name>
+    -->
     <popupTime>875</popupTime>
   </desktops>
   <!-- The number of milliseconds to show the popup for when switching
        desktops.  Set this to 0 to disable the popup. -->
   <resize>
     <drawContents>yes</drawContents>
-    <popupShow>Nonpixel</popupShow>
+    <popupShow>Never</popupShow>
     <!-- 'Always', 'Never', or 'Nonpixel' (xterms and such) -->
     <popupPosition>Center</popupPosition>
     <!-- 'Center', 'Top', or 'Fixed' -->
@@ -154,7 +157,7 @@
     <right>0</right>
   </margins>
   <dock>
-    <position>TopLeft</position>
+    <position>Top</position>
     <!-- (Top|Bottom)(Left|Right|)|Top|Bottom|Left|Right|Floating -->
     <floatingX>0</floatingX>
     <floatingY>0</floatingY>
@@ -310,41 +313,25 @@
         <direction>down</direction>
       </action>
     </keybind>
-    <keybind key="W-e">
+    <keybind key="C-S-Escape">
       <action name="Execute">
-        <command>thunar</command>
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>Archivos</name>
-        </startupnotify>
-      </action>
-    </keybind>
-    <keybind key="S-W-e">
-      <action name="Execute">
-        <command>nemo</command>
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>Nemo filemanager</name>
-        </startupnotify>
+        <command>lxtask</command>
       </action>
     </keybind>
     <keybind key="W-z">
       <action name="Execute">
         <command>firefox</command>
         <startupnotify>
-          <enabled>true</enabled>
-          <name>Firefox</name>
+          <enabled>yes</enabled>
         </startupnotify>
       </action>
     </keybind>
-    <keybind key="C-W-Up">
+    <keybind key="W-g">
       <action name="Execute">
-        <command>pulsemixer --change-volume +5</command>
-      </action>
-    </keybind>
-    <keybind key="C-W-Down">
-      <action name="Execute">
-        <command>pulsemixer --change-volume -5</command>
+        <command>microsoft-edge-beta</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+        </startupnotify>
       </action>
     </keybind>
     <keybind key="A-F2">
@@ -362,19 +349,32 @@
         <command>xkill</command>
       </action>
     </keybind>
-    <keybind key="C-Escape">
+    <keybind key="W-e">
       <action name="Execute">
-        <command>lxtask</command>
+        <command>thunar</command>
+        <startupnotify>
+          <enabled>true</enabled>
+        </startupnotify>
+      </action>
+    </keybind>
+    <keybind key="C-S-A-Delete">
+      <action name="Execute">
+        <command>openbox --exit</command>
+      </action>
+    </keybind>
+    <keybind key="C-S-A-Next">
+      <action name="Execute">
+        <command>systemctl -i poweroff</command>
+      </action>
+    </keybind>
+    <keybind key="C-S-A-Prior">
+      <action name="Execute">
+        <command>systemctl -i reboot</command>
       </action>
     </keybind>
     <keybind key="A-F1">
       <action name="Execute">
         <command>jgmenu_run</command>
-      </action>
-    </keybind>
-    <keybind key="S-C-A-Delete">
-      <action name="Execute">
-        <command>openbox --exit</command>
       </action>
     </keybind>
     <keybind key="W-l">
@@ -400,11 +400,6 @@
       </action>
       <action name="MoveToEdge">
         <direction>east</direction>
-      </action>
-    </keybind>
-    <keybind key="S-C-A-Prior">
-      <action name="Execute">
-        <command>systemctl -i reboot</command>
       </action>
     </keybind>
   </keyboard>
@@ -716,7 +711,7 @@
       <mousebind button="Right" action="Press">
         <!-- action name="ShowMenu">
           <menu>root-menu</menu>
-		</action> -->
+        </action> -->
         <action name="Execute">
           <command>jgmenu_run</command>
         </action>
@@ -746,8 +741,8 @@
     </context>
   </mouse>
   <menu>
-    <!-- default menu file (or custom one in $HOME/.config/openbox/) -->
-    <file>menu.xml</file>
+    <!-- file>menu.xml</file> -->
+    <file>/etc/xdg/openbox/LXDE/menu.xml</file>
     <hideDelay>200</hideDelay>
     <!-- if a press-release lasts longer than this setting (in milliseconds), the
        menu is hidden again -->
@@ -767,6 +762,4 @@
     <!-- controls if icons appear in the client-list-(combined-)menu -->
     <manageDesktops>yes</manageDesktops>
   </menu>
-  <!-- show the manage desktops section in the client-list-(combined-)menu -->
-  <applications/>
 </openbox_config>
