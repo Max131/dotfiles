@@ -1,15 +1,21 @@
-#picom -C -f -I 1 -O 1 -G --dbus &
-xcompmgr -n &
-pcmanfm --desktop &
 #nitrogen --restore &
+#/usr/bin/lxpolkit &
+#guake &
+#picom -C -f -I 1 -O 1 -G --dbus &
+#polybar -r -q &
+
+#xrandr --output HDMI-1 --off --output DP-1 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-2 --off --output DP-2 --mode 1440x900 --pos 1920x90 --rotate normal --output HDMI-3 --off &
+xcompmgr -n &
+redshift-gtk &
+pcmanfm --desktop &
 tint2 &
-tilda &
-volumeicon &
+guake &
+sleep 4s && volumeicon &
 parcellite &
 nm-applet &
-/usr/bin/lxpolkit &
 xautolock -time 90 -locker "mantablockscreen -sc" &
 xcape -e 'Super_L=Alt_L|F1' &
 xcape -e 'Super_R=Alt_L|F1' &
-/usr/lib/xfce4/notifyd/xfce4-notifyd &
-#redshift-gtk &
+dunst &
+sleep 4s && cornora -iof -tl skippy-xd &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
