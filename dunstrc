@@ -15,21 +15,13 @@
     #
     # If this option is set to mouse or keyboard, the monitor option
     # will be ignored.
-    follow = mouse
+    # follow = mouse
 
     # The geometry of the window:
-    #   [{width}]x{height}[+/-{x}+/-{y}]
-    # The geometry of the message window.
-    # The height is measured in number of notifications everything else
-    # in pixels.  If the width is omitted but the height is given
-    # ("-geometry x2"), the message window expands over the whole screen
-    # (dmenu-like).  If width is 0, the window expands to the longest
-    # message displayed.  A positive x is measured from the left, a
-    # negative from the right side of the screen.  Y is measured from
-    # the top and down respectively.
-    # The width can be negative.  In this case the actual width is the
-    # screen width minus the width defined in within the geometry option.
-    geometry = "300x200-10-40"
+    width = (0, 350)
+    height = 200
+    origin = bottom-right
+    offset = 8x40
 
     # Show how many messages are currently hidden (because of geometry).
     indicate_hidden = yes
@@ -42,13 +34,9 @@
     progress_bar_frame_width = 0
 
     # The transparency of the window.  Range: [0; 100].
-    # This option will only work if a compositing window manager is
-    # present (e.g. xcompmgr, compiz, etc.).
-    transparency = 5 
+    transparency = 0 
 
     # The height of the entire notification.  If the height is smaller
-    # than the font height and padding combined, it will be raised
-    # to the font height and padding.
     notification_height = 60
 
     # Draw a line of "separator_height" pixel height between two
@@ -60,7 +48,7 @@
     padding = 20
 
     # Horizontal padding.
-    horizontal_padding = 40
+    horizontal_padding = 30
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
@@ -169,7 +157,8 @@
     max_icon_size = 64
 
     # Paths to default icons.
-    icon_path = /usr/share/icons/Paper/32x32/status/:/usr/share/icons/Paper/32x32/devices/:/usr/share/icons/Papirus/32x32/apps/
+    #icon_path = /usr/share/icons/Newaita/status/32/:/usr/share/icons/Newaita/devices/32/:/usr/share/icons/Paper/apps/32/
+    icon_path = /usr/share/icons/Qogir/32/apps/:/usr/share/icons/Qogir/32/status/:/usr/share/icons/Qogir/32/devices/:/usr/share/icons/Qogir/24/panel/:/usr/share/icons/Qogir/scalable/apps/
     ### History ###
 
     # Should a notification popped up from history be sticky or timeout
@@ -215,7 +204,7 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 3
+    corner_radius = 4
 
     ### Legacy
 
@@ -285,8 +274,8 @@
 
 [urgency_normal]
     #background = "#285577"
-	background = "#EFF0EB"
-    foreground = "#4D4D4D"
+    foreground = "#EFF1EB"
+    background = "#3D3846"
     timeout = 6
     # Icon for notifications with normal urgency, uncomment to enable
     #icon = /path/to/icon

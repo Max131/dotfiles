@@ -1,0 +1,25 @@
+{
+  "signature.enable": false,
+  "suggest.enablePreview": true,
+  "suggest.floatEnable": true,
+  "suggest.triggerCompletionWait": 50,
+  "suggest.maxCompleteItemCount": 16,
+  "typescript.preferences.quoteStyle": "single",
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.suggest.completeFunctionCalls": true,
+  "javascript.suggest.completeFunctionCalls": true,
+  "coc.preferences.formatOnSaveFiletypes": ["javascript","svelte", "vue"],
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "wxss.validate": false,
+  "cssmodules.camelCase": true,
+  "markdownlint.config": {
+    "default": true,
+    "line_length":false
+  },
+  "lightbulb.enableVirtualText": true,
+  "prettier.printWidth": 120,
+  "svelte.enable-ts-plugin": true
+}
+
