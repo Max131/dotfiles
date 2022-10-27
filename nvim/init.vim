@@ -47,7 +47,8 @@ noremap <F3> :Lexplore<CR>
 noremap <F4> :nohls<CR>
 "noremap <F5> :tabp<CR>
 "noremap <F6> :tabn<CR> 
-noremap <F9> :silent %!prettier --stdin-filepath %<CR>
+"noremap <F9> :silent %!prettier --stdin-filepath %<CR>
+noremap <F9> :CocCommand prettier.formatFile <CR>
 noremap <S-Up> :m.-2<CR>
 noremap <S-Down> :m.+1<CR>
 map <S-Insert> <MiddleMouse>
@@ -64,11 +65,13 @@ call plug#begin('~/.config/nvim/plugs')
   Plug 'scrooloose/nerdcommenter' "Commentarios
   Plug 'neoclide/coc.nvim'
   Plug 'itchyny/vim-gitbranch'
-  Plug 'nvim-lualine/lualine.nvim'
+  "Plug 'nvim-lualine/lualine.nvim'
   Plug 'tpope/vim-surround' "( [ {
-  "Plug 'itchyny/lightline.vim'
+  Plug 'itchyny/lightline.vim'
   "Plug 'vim-airline/vim-airline'
   "Plug 'ryanoasis/vim-devicons'
+  Plug 'leafOfTree/vim-svelte-plugin'
+  Plug 'voldikss/vim-floaterm'
   "Plug 'scrooloose/syntastic'
   "Plug 'tpope/vim-fugitive'
   "Plug 'editorconfig/editorconfig-vim'
@@ -91,20 +94,20 @@ call plug#end()
 
 "Set theme
 color onehalfdark
-""let g:lightline = {
-""      \ 'colorscheme': '',
-""      \ }
-"lightline
 "let g:lightline = {
-      "\ 'colorscheme': 'one',
-      "\ 'active': {
-      "\   'left': [ [ 'mode', 'paste' ],
-      "\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      "\ },
-      "\ 'component_function': {
-      "\   'gitbranch': 'gitbranch#name'
-      "\ },
-      "\ }
+"      \ 'colorscheme': '',
+"      \ }
+"lightline
+let g:lightline = {
+      \ 'colorscheme': 'one',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'gitbranch#name'
+      \ },
+      \ }
 
 "Airline Options
 "let g:airline_left_sep=""
@@ -134,6 +137,7 @@ let g:netrw_winsize=25
 
 "Emmet options
 "let g:user_emmet_leader_key='<Esc><Esc>'
+"let g:user_emmet_leader_key='<C-L>'
 let g:user_emmet_leader_key='<C-L>'
 let g:user_emmet_settings = {
   \  'javascript.jsx' : {
@@ -141,39 +145,39 @@ let g:user_emmet_settings = {
     \  },
   \}
 
-lua << END
-require('lualine').setup {
-  options = {
-    icons_enabled = true,
-    theme = 'nord',
-    component_separators = {},
-    section_separators = {},
-    --component_separators = { left = '', right = ''},
-    --section_separators = { left = '', right = ''},
-    disabled_filetypes = {},
-    always_divide_middle = true,
-    globalstatus = false,
-  },
-  sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
-    lualine_y = {},
-    lualine_z = {}
-  },
-  tabline = {},
-  extensions = {}
-}
-END
+"lua << END
+"require('lualine').setup {
+"  options = {
+"    icons_enabled = true,
+"    theme = 'nord',
+"    component_separators = {},
+"    section_separators = {},
+"    --component_separators = { left = '', right = ''},
+"    --section_separators = { left = '', right = ''},
+"    disabled_filetypes = {},
+"    always_divide_middle = true,
+"    globalstatus = false,
+"  },
+"  sections = {
+"    lualine_a = {'mode'},
+"    lualine_b = {'branch', 'diff', 'diagnostics'},
+"    lualine_c = {'filename'},
+"    lualine_x = {'encoding', 'fileformat', 'filetype'},
+"    lualine_y = {'progress'},
+"    lualine_z = {'location'}
+"  },
+"  inactive_sections = {
+"    lualine_a = {},
+"    lualine_b = {},
+"    lualine_c = {'filename'},
+"    lualine_x = {'location'},
+"    lualine_y = {},
+"    lualine_z = {}
+"  },
+"  tabline = {},
+"  extensions = {}
+"}
+"END
 
 so ~/.config/nvim/coc.vim
 "For coc-css scss
@@ -181,3 +185,17 @@ autocmd FileType css setl iskeyword+=-
 let g:LanguageClient_serverCommands = {
     \ 'sh': ['bash-language-server', 'start']
     \ }
+
+"Svelte plugin
+let g:vim_svelte_plugin_use_pug = 1
+let g:vim_svelte_plugin_use_sass = 1 
+
+
+"FloatTerm Plugin 
+let g:floaterm_title = 'Terminal'
+"let g:floaterm_wintype = 'split'
+let g:floaterm_position = 'topright'
+let g:floaterm_keymap_toggle = '<F5>'
+"let g:floaterm_keymap_new    = '<F6>'
+let g:floaterm_keymap_prev   = '<F7>'
+let g:floaterm_keymap_next   = '<F8>'
