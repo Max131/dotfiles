@@ -20,6 +20,20 @@
   },
   "lightbulb.enableVirtualText": true,
   "prettier.printWidth": 120,
-  "svelte.enable-ts-plugin": true
+  "svelte.enable-ts-plugin": true,
+  "tailwindCSS.includeLanguages": {
+    "eelixir": "html",
+    "elixir": "html",
+    "eruby": "html",
+    "htmldjango": "html",
+    "html.twig": "html",
+    "svelte": "svelte",
+    "blade": "blade.php"
+  },
+  "coc.preferences.rootPatterns": [
+    ".git",
+    ".hg",
+    ".projections.json"
+  ]
 }
 

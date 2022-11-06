@@ -1,4 +1,4 @@
-let mapleader = " " " map leader to Space
+let mapleader = " "
 set history=1000
 set smartindent
 set smartcase
@@ -29,26 +29,17 @@ set mouse=a
 autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif 
 
 "Key maps
-"inoremap " ""<left>
-"inoremap ' ''<left>
-"inoremap ( ()<left>
-"inoremap [ []<left>
-"inoremap { {}<left>
-"inoremap {<CR> {<CR>}<ESC>O
-"inoremap {;<CR> {<CR>};<ESC>O
 inoremap clg console.log();<left><left>
 inoremap <F2> <ESC>:w<CR>
-inoremap <F5> <ESC>:tabp<CR>
-inoremap <F6> <ESC>:tabn<CR>
+inoremap <F3> <ESC>:Telescope find_files<CR>
 inoremap <S-Up> <ESC>:m.-2<CR>
 inoremap <S-Down> <ESC>:m.+1<CR>
 noremap <F2> :w<CR>
-noremap <F3> :Lexplore<CR>
+noremap <F3> :Telescope find_files<CR>
+noremap <F15> :Lexplore<CR>
 noremap <F4> :nohls<CR>
-"noremap <F5> :tabp<CR>
-"noremap <F6> :tabn<CR> 
-"noremap <F9> :silent %!prettier --stdin-filepath %<CR>
 noremap <F9> :CocCommand prettier.formatFile <CR>
+noremap <F10> :SidebarNvimToggle <CR>
 noremap <S-Up> :m.-2<CR>
 noremap <S-Down> :m.+1<CR>
 map <S-Insert> <MiddleMouse>
@@ -65,63 +56,44 @@ call plug#begin('~/.config/nvim/plugs')
   Plug 'scrooloose/nerdcommenter' "Commentarios
   Plug 'neoclide/coc.nvim'
   Plug 'itchyny/vim-gitbranch'
-  "Plug 'nvim-lualine/lualine.nvim'
   Plug 'tpope/vim-surround' "( [ {
-  Plug 'itchyny/lightline.vim'
-  "Plug 'vim-airline/vim-airline'
-  "Plug 'ryanoasis/vim-devicons'
   Plug 'leafOfTree/vim-svelte-plugin'
   Plug 'voldikss/vim-floaterm'
-  "Plug 'scrooloose/syntastic'
-  "Plug 'tpope/vim-fugitive'
-  "Plug 'editorconfig/editorconfig-vim'
-  "Plug 'junegunn/fzf' "Busca dentro de archivos
-  "Plug 'junegunn/fzf.vim'
-  "Plug 'MaxMEllon/vim-jsx-pretty'
+  Plug 'mhinz/vim-startify'
+  Plug 'editorconfig/editorconfig-vim'
+  Plug 'nvim-lualine/lualine.nvim'
+  Plug 'kyazdani42/nvim-web-devicons'
+  "Plug 'itchyny/lightline.vim'
 
   "Themes
-  Plug 'arcticicestudio/nord-vim'
-  Plug 'sainnhe/edge'
-  Plug 'sonph/onehalf', { 'rtp': 'vim' }
   Plug 'sainnhe/gruvbox-material'
-  Plug 'rebelot/kanagawa.nvim'
   Plug 'drewtempelmeyer/palenight.vim'
-  Plug 'joshdick/onedark.vim'
-  "Plug 'morhetz/gruvbox'
-  "Plug 'pierre-ac/vim-northerner'
-  "End Themes
+  Plug 'navarasu/onedark.nvim'
+  Plug 'EdenEast/nightfox.nvim'
+  Plug 'sthendev/mariana.vim'
+
+  "Telescope 
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+  Plug 'nvim-treesitter/nvim-treesitter'
+
+  Plug 'sidebar-nvim/sidebar.nvim'
 call plug#end()
 
 "Set theme
-color onehalfdark
+color nightfox
+
+"lightline theme
 "let g:lightline = {
-"      \ 'colorscheme': '',
-"      \ }
-"lightline
-let g:lightline = {
-      \ 'colorscheme': 'one',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'gitbranch#name'
-      \ },
-      \ }
-
-"Airline Options
-"let g:airline_left_sep=""
-"let g:airline_right_sep=""
-"let g:airline_left_sep=""
-"let g:airline_right_sep=""
-"let g:airline_powerline_fonts=1
-"let g:airline#extensions#tabline#enable=1
-
-"YCM CSS autocomplete
-"let g:ycm_semantic_triggers = {
-"    \   'css': [ 're!^', 're!^\s+', ': ' ],
-"    \   'scss': [ 're!^', 're!^\s+', ': ' ],
-"    \ }
+      "\ 'colorscheme': 'wombat',
+      "\ 'active': {
+      "\   'left': [ [ 'mode', 'paste' ],
+      "\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      "\ },
+      "\ 'component_function': {
+      "\   'gitbranch': 'gitbranch#name'
+      "\ },
+      "\ }
 
 "CSS & HTML auto build autocomplete
 "autocmd FileType css set omnifunc=csscomplete#CompleteCSS
@@ -136,8 +108,6 @@ let g:netrw_browse_split=3
 let g:netrw_winsize=25
 
 "Emmet options
-"let g:user_emmet_leader_key='<Esc><Esc>'
-"let g:user_emmet_leader_key='<C-L>'
 let g:user_emmet_leader_key='<C-L>'
 let g:user_emmet_settings = {
   \  'javascript.jsx' : {
@@ -145,41 +115,51 @@ let g:user_emmet_settings = {
     \  },
   \}
 
-"lua << END
-"require('lualine').setup {
-"  options = {
-"    icons_enabled = true,
-"    theme = 'nord',
-"    component_separators = {},
-"    section_separators = {},
-"    --component_separators = { left = '', right = ''},
-"    --section_separators = { left = '', right = ''},
-"    disabled_filetypes = {},
-"    always_divide_middle = true,
-"    globalstatus = false,
-"  },
-"  sections = {
-"    lualine_a = {'mode'},
-"    lualine_b = {'branch', 'diff', 'diagnostics'},
-"    lualine_c = {'filename'},
-"    lualine_x = {'encoding', 'fileformat', 'filetype'},
-"    lualine_y = {'progress'},
-"    lualine_z = {'location'}
-"  },
-"  inactive_sections = {
-"    lualine_a = {},
-"    lualine_b = {},
-"    lualine_c = {'filename'},
-"    lualine_x = {'location'},
-"    lualine_y = {},
-"    lualine_z = {}
-"  },
-"  tabline = {},
-"  extensions = {}
-"}
-"END
+lua << END
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'auto',
+    component_separators = {},
+    --section_separators = {},
+    --component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {},
+    always_divide_middle = true,
+    globalstatus = true,
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  extensions = {}, 
+}
 
-so ~/.config/nvim/coc.vim
+require("sidebar-nvim").setup(
+    {
+      side = 'right', 
+      section = {"datetime", "git", "buffers", "diagnostics"},
+      buffers = {
+        sorting = "name",
+        show_numbers = true
+      }
+    } 
+   )
+END
+
 "For coc-css scss
 autocmd FileType css setl iskeyword+=-
 let g:LanguageClient_serverCommands = {
@@ -190,12 +170,13 @@ let g:LanguageClient_serverCommands = {
 let g:vim_svelte_plugin_use_pug = 1
 let g:vim_svelte_plugin_use_sass = 1 
 
-
 "FloatTerm Plugin 
 let g:floaterm_title = 'Terminal'
-"let g:floaterm_wintype = 'split'
 let g:floaterm_position = 'topright'
 let g:floaterm_keymap_toggle = '<F5>'
-"let g:floaterm_keymap_new    = '<F6>'
 let g:floaterm_keymap_prev   = '<F7>'
 let g:floaterm_keymap_next   = '<F8>'
+"let g:floaterm_keymap_new    = '<F6>'
+"let g:floaterm_wintype = 'split'
+
+so ~/.config/nvim/coc.vim
