@@ -36,16 +36,17 @@ inoremap <S-Up> <ESC>:m.-2<CR>
 inoremap <S-Down> <ESC>:m.+1<CR>
 noremap <F2> :w<CR>
 noremap <F3> :Telescope find_files<CR>
-noremap <F15> :Lexplore<CR>
 noremap <F4> :nohls<CR>
 noremap <F9> :CocCommand prettier.formatFile <CR>
 noremap <F10> :SidebarNvimToggle <CR>
+noremap <F11> :Lexplore<CR>
 noremap <S-Up> :m.-2<CR>
 noremap <S-Down> :m.+1<CR>
 map <S-Insert> <MiddleMouse>
 
 "Plugins
 call plug#begin('~/.config/nvim/plugs')
+  Plug 'neoclide/coc.nvim'
   Plug 'ap/vim-css-color'
   Plug 'alvan/vim-closetag'
   Plug 'airblade/vim-gitgutter'
@@ -54,15 +55,15 @@ call plug#begin('~/.config/nvim/plugs')
   Plug 'mattn/emmet-vim'
   Plug 'yggdroot/indentline' "Lineas de indent
   Plug 'scrooloose/nerdcommenter' "Commentarios
-  Plug 'neoclide/coc.nvim'
   Plug 'itchyny/vim-gitbranch'
   Plug 'tpope/vim-surround' "( [ {
   Plug 'leafOfTree/vim-svelte-plugin'
-  Plug 'voldikss/vim-floaterm'
-  Plug 'mhinz/vim-startify'
   Plug 'editorconfig/editorconfig-vim'
   Plug 'nvim-lualine/lualine.nvim'
   Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'voldikss/vim-floaterm'
+  Plug 'airblade/vim-rooter'
+  Plug 'mhinz/vim-startify' "Dashboard
   "Plug 'itchyny/lightline.vim'
 
   "Themes
@@ -81,7 +82,7 @@ call plug#begin('~/.config/nvim/plugs')
 call plug#end()
 
 "Set theme
-color nightfox
+color onedark
 
 "lightline theme
 "let g:lightline = {

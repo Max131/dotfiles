@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 #######################################################
 ####### Anarchy ZSH configuration file    #######
 #######################################################
@@ -7,11 +14,11 @@
 # setopt NOHUP
 # setopt NOTIFY
 # setopt NO_FLOW_CONTROL
-setopt INC_APPEND_HISTORY SHARE_HISTORY
-setopt APPEND_HISTORY
 # setopt AUTO_LIST
 # setopt AUTO_REMOVE_SLASH
 # setopt AUTO_RESUME
+setopt INC_APPEND_HISTORY SHARE_HISTORY
+setopt APPEND_HISTORY
 unsetopt BG_NICE
 setopt CORRECT
 setopt EXTENDED_HISTORY
@@ -39,7 +46,7 @@ zle -N history-beginning-search-forward-end history-search-end
 
 ### Set variables
 #################
-PATH="/usr/local/bin:/usr/local/sbin/:$(ruby -e 'puts Gem.user_dir')/bin":$PATH
+PATH="/usr/local/bin:/usr/local/sbin/:$(ruby -e 'puts Gem.user_dir')/bin":/home/m13/.local/share/gem/ruby/3.0.0/bin:/home/m13/bin:/home/m13/.local/bin:$PATH:$PATH
 HISTFILE=$HOME/.zhistory
 HISTSIZE=1000
 SAVEHIST=1000
@@ -67,29 +74,51 @@ unsetopt ALL_EXPORT
    
 ### Set alias
 #############
-#alias ll='ls -al'
-#alias ls='ls --color=auto '
 #alias cd..='cd ..'
+#alias ls='ls --color=auto '
+#alias ls='ls --color=always --group-directories-first'
+#alias ll='ls -al'
+#alias ll='ls -l -k'
 alias cp='cp -i'
 alias grep='grep --color=auto'
-alias l='ls'
+alias ls='exa --color=always --group-directories-first --icons -s type --git-ignore'
+alias l='ls --group-directories-first'
 alias la='ls -a'
 alias lf='ls -d */'
-alias li='ls -1'
-alias ll='ls -l -k'
-alias ls='ls --color=always'
+alias li='ls -1 --color=always'
+alias ll='ls -l'
+alias grep='grep --color=always'
+alias less='less -r'
 alias mv='mv -i'
 alias rm='rm -i'
 alias s='cd ..'
+alias vim='nvim'
+alias cat='bat'
+alias pn='pnpm'
 
+#Nodo shortcuts
+alias freo='cd ~/nodo/freogan/wp/wp-content/themes/freogan'
+alias freog='cd ~/nodo/freogan-g/wp/wp-content/themes/freoganlife'
+alias brc='cd ~/nodo/breathable-cities/wp/wp-content/themes/bc_theme'
+alias rade='cd ~/nodo/rader/wp/wp-content/themes/rader'
+alias inside='cd ~/nodo/insideart/wp/wp-content/themes/insideart'
+alias onu='cd ~/nodo/onudh/wp/wp-content/themes/hchr'
+alias mfk='cd ~/nodo/frida/wp/wp-content/themes/mfk'
+alias expo='cd ~/nodo/expo/wp/wp-content/themes/exposicion-ciudadana'
+alias oki='cd ~/nodo/okila/wp-content/themes/okila_v2'
+alias rediv='cd ~/nodo/rediv/wp/wp-content/themes/rediv'
+alias 17in='cd ~/nodo/17instituto/wp-content/themes/17index'
+alias 17ed='cd ~/nodo/17editorial/wp/wp-content/themes/17editorial'
+
+#Git Alias
+alias mergedev='git checkout dev && git pull && git checkout - && git merge dev'
+alias pushdev='mergedev && git checkout dev && git merge devi && git push && git checkout devi'
 
 ### Bind keys
 #############
 autoload -U compinit
 compinit
 bindkey "^?" backward-delete-char
-#bindkey '^[OH' beginning-of-line
-#bindkey '^[OF' end-of-line
 bindkey '^[[5~' up-line-or-history
 bindkey '^[[6~' down-line-or-history
 bindkey "^[[A" history-beginning-search-backward-end
@@ -101,6 +130,8 @@ bindkey '^I' complete-word # complete on tab, leave expansion to _expand
 bindkey '^[[H' beginning-of-line
 bindkey '^[[F' end-of-line
 bindkey '^[[3~' delete-char
+bindkey '^[[1;5C' forward-word 
+bindkey '^[[1;5D' backward-word
 
 # for freebsd console
 zstyle ':completion::complete:*' use-cache on
@@ -183,7 +214,7 @@ zstyle '*' single-ignored show
 ### Source plugins
 ##################
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
+#source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 backward-kill-dir () {
     local WORDCHARS=${WORDCHARS/\/}
     zle backward-kill-word
@@ -193,6 +224,15 @@ bindkey '^[^?' backward-kill-dir
 export EDITOR=vim
 export LANG=es_MX.UTF-8
 export LANGUAGE=es_MX
-source /etc/profile.d/vte.sh
-#source /usr/share/oh-my-zsh/zshrc
+#source /etc/profile.d/vte.sh
+#source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
+
+# pnpm
+export PNPM_HOME="/home/m13/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
