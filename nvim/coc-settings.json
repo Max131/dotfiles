@@ -8,7 +8,7 @@
   "javascript.preferences.quoteStyle": "single",
   "typescript.suggest.completeFunctionCalls": true,
   "javascript.suggest.completeFunctionCalls": true,
-  "coc.preferences.formatOnSaveFiletypes": ["javascript","svelte", "vue"],
+  "coc.preferences.formatOnSaveFiletypes": ["javascript","svelte", "vue", "json"],
   "css.validate": false,
   "less.validate": false,
   "scss.validate": false,
@@ -18,7 +18,6 @@
     "default": true,
     "line_length":false
   },
-  "lightbulb.enableVirtualText": true,
   "prettier.printWidth": 120,
   "svelte.enable-ts-plugin": true,
   "tailwindCSS.includeLanguages": {
@@ -30,7 +29,7 @@
     "svelte": "svelte",
     "blade": "blade.php"
   },
-  "coc.preferences.rootPatterns": [
+  "workspace.rootPatterns": [
     ".git",
     ".hg",
     ".projections.json"

@@ -32,10 +32,12 @@ autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 
 inoremap clg console.log();<left><left>
 inoremap <F2> <ESC>:w<CR>
 inoremap <F3> <ESC>:Telescope find_files<CR>
+"inoremap <F3> <ESC>:Files<CR>
 inoremap <S-Up> <ESC>:m.-2<CR>
 inoremap <S-Down> <ESC>:m.+1<CR>
 noremap <F2> :w<CR>
 noremap <F3> :Telescope find_files<CR>
+"noremap <F3> :Files<CR>
 noremap <F4> :nohls<CR>
 noremap <F9> :CocCommand prettier.formatFile <CR>
 noremap <F10> :SidebarNvimToggle <CR>
@@ -64,6 +66,7 @@ call plug#begin('~/.config/nvim/plugs')
   Plug 'voldikss/vim-floaterm'
   Plug 'airblade/vim-rooter'
   Plug 'mhinz/vim-startify' "Dashboard
+  Plug 'junegunn/fzf.vim'
   "Plug 'itchyny/lightline.vim'
 
   "Themes
@@ -72,6 +75,7 @@ call plug#begin('~/.config/nvim/plugs')
   Plug 'navarasu/onedark.nvim'
   Plug 'EdenEast/nightfox.nvim'
   Plug 'sthendev/mariana.vim'
+  Plug 'dracula/vim'
 
   "Telescope 
   Plug 'nvim-lua/plenary.nvim'
@@ -117,6 +121,7 @@ let g:user_emmet_settings = {
   \}
 
 lua << END
+--Lualine
 require('lualine').setup {
   options = {
     icons_enabled = true,
@@ -149,6 +154,7 @@ require('lualine').setup {
   extensions = {}, 
 }
 
+--SidebarNvim
 require("sidebar-nvim").setup(
     {
       side = 'right', 
@@ -159,6 +165,11 @@ require("sidebar-nvim").setup(
       }
     } 
    )
+
+--Telescope
+require("telescope").setup{
+      \ defaults = {file_ignore_patterns = {"node_modules", "vendor"}}
+  \ }
 END
 
 "For coc-css scss
