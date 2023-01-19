@@ -41,14 +41,14 @@ noremap <F3> :Telescope find_files<CR>
 noremap <F4> :nohls<CR>
 noremap <F9> :CocCommand prettier.formatFile <CR>
 noremap <F10> :SidebarNvimToggle <CR>
-noremap <F11> :Lexplore<CR>
+noremap <F13> :Lexplore<CR>
 noremap <S-Up> :m.-2<CR>
 noremap <S-Down> :m.+1<CR>
 map <S-Insert> <MiddleMouse>
 
 "Plugins
 call plug#begin('~/.config/nvim/plugs')
-  Plug 'neoclide/coc.nvim'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'ap/vim-css-color'
   Plug 'alvan/vim-closetag'
   Plug 'airblade/vim-gitgutter'
@@ -59,6 +59,7 @@ call plug#begin('~/.config/nvim/plugs')
   Plug 'scrooloose/nerdcommenter' "Commentarios
   Plug 'itchyny/vim-gitbranch'
   Plug 'tpope/vim-surround' "( [ {
+  Plug 'tpope/vim-repeat'
   Plug 'leafOfTree/vim-svelte-plugin'
   Plug 'editorconfig/editorconfig-vim'
   Plug 'nvim-lualine/lualine.nvim'
@@ -86,7 +87,7 @@ call plug#begin('~/.config/nvim/plugs')
 call plug#end()
 
 "Set theme
-color onedark
+color palenight
 
 "lightline theme
 "let g:lightline = {
