@@ -7,4 +7,9 @@ return {
       format_on_save = true,
     }
   },
+  treesitter = {
+    matchup = {
+      enable = true
+    }
+  }
 }
