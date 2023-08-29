@@ -12,7 +12,6 @@ return {
     { import = "astrocommunity.pack.astro" },
     { import = "astrocommunity.pack.bash" },
     { import = "astrocommunity.pack.json" },
-    { import = "astrocommunity.pack.lua" },
     { import = "astrocommunity.pack.markdown" },
     { import = "astrocommunity.pack.php" },
     { import = "astrocommunity.pack.svelte" },
@@ -23,9 +22,15 @@ return {
     { import = "astrocommunity.pack.yaml" },
     { import = "astrocommunity.scrolling.neoscroll-nvim" },
     -- { "rose-pine", lazy = false },
-    { "wavded/vim-stylus", lazy = false },
-    { "mattn/emmet-vim", lazy = false, init = function() vim.g.user_emmet_leader_key = "<C-L>" end },
+    { "wavded/vim-stylus",                                         lazy = false },
+    {
+      "mattn/emmet-vim",
+      lazy = false,
+      init = function()
+        vim.g.user_emmet_leader_key = "<C-L>"
+      end,
+    },
     { "tpope/vim-surround", lazy = false },
-    { "tpope/vim-repeat", lazy = false },
+    { "tpope/vim-repeat",   lazy = false },
   },
 }
