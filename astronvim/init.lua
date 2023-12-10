@@ -38,12 +38,23 @@ return {
     { "mattn/emmet-vim", lazy = false, init = function() vim.g.user_emmet_leader_key = "<C-L>" end },
     { "tpope/vim-surround", lazy = false },
     { "tpope/vim-repeat", lazy = false },
-    { "windwp/nvim-ts-autotag", lazy = false },
-    telescope = {
-      defaults = {
-        file_ignore_patterns = {
-          "node_modules",
-          "*.webp",
+    { "windwp/nvim-ts-autotag", lazy = false, setup = {
+      autotag = {
+        enable = true,
+      },
+    } },
+    { "hhsnopek/vim-sugarss", lazy = false },
+    {
+      "nvim-telescope/telescope.nvim",
+      opts = {
+        defaults = {
+          file_ignore_patterns = {
+            "%.webp$",
+            "%.png$",
+            "%.jpg$",
+            "%.jpeg$",
+            "%.obj$",
+          },
         },
       },
     },
