@@ -147,14 +147,14 @@ lvim.builtin.telescope.defaults.file_ignore_patterns = {
   "node_modules"
 }
 
--- keybindings
-lvim.builtin.which_key.mappings["f"] = {
-  name = "Find",
-  f = { "<cmd>Telescope find_files<cr>", "Files" },
-  o = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
-  w = { "<cmd>Telescope live_grep<cr>", "Live grep" },
-  i = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "In buffer" }
-}
+-- keybindings example
+-- lvim.builtin.which_key.mappings["f"] = {
+--   name = "Find",
+--   f = { "<cmd>Telescope find_files<cr>", "Files" },
+--   o = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
+--   w = { "<cmd>Telescope live_grep<cr>", "Live grep" },
+--   i = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "In buffer" }
+-- }
 -- lvim.builtin.lualine.style = "default"
 
-lvim.colorscheme = "catppuccin"
+lvim.colorscheme = "monokai-pro-octagon"
