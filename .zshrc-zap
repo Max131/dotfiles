@@ -28,6 +28,7 @@ backward-kill-dir () {
 zle -N backward-kill-dir
 
 bindkey '^W' backward-kill-dir
+bindkey '^R' history-incremental-search-backward
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 bindkey '^[[H' beginning-of-line
