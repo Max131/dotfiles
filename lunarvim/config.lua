@@ -148,6 +148,11 @@ lvim.builtin.telescope.defaults.file_ignore_patterns = {
 }
 
 -- keybindings example
+lvim.lsp.buffer_mappings.normal_mode["gr"] = {
+  "<cmd>Telescope lsp_references<CR>", "Go References"
+}
+-- lvim.builtin.which_key.mappings["gr"] = {
+-- }
 -- lvim.builtin.which_key.mappings["f"] = {
 --   name = "Find",
 --   f = { "<cmd>Telescope find_files<cr>", "Files" },
