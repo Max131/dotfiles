@@ -3,8 +3,6 @@
 -- Video Tutorials: https://www.youtube.com/watch?v=sFA9kX-Ud_c&list=PLhoH5vyxr6QqGu0i7tt_XoVK9v-KvZ3m6
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
---
-
 -- vim options
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
@@ -26,15 +24,8 @@ lvim.keys.normal_mode["<S-l>"] = ":bnext<CR>"
 lvim.keys.normal_mode["<A-Up>"] = ":m.-2<CR>"
 lvim.keys.normal_mode["<A-Down>"] = ":m.+1<CR>"
 lvim.keys.insert_mode["clg"] = "console.log()<left>"
-
-lvim.builtin.alpha.active = true
-lvim.builtin.alpha.mode = "dashboard"
-lvim.builtin.terminal.active = true
-lvim.builtin.nvimtree.setup.view.side = "left"
--- lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
-
--- Automatically install missing parsers when entering buffer
-lvim.builtin.treesitter.auto_install = true
+lvim.keys.normal_mode["<A-Left>"] = ":BufferLineMovePrev<CR>"
+lvim.keys.normal_mode["<A-Right>"] = ":BufferLineMoveNext<CR>"
 
 -- -- Additional Plugins <https://www.lunarvim.org/docs/plugins#user-plugins>
 lvim.plugins = {
@@ -94,19 +85,6 @@ lvim.plugins = {
     end,
   },
   {
-    "ethanholz/nvim-lastplace",
-    event = "BufRead",
-    config = function()
-      require("nvim-lastplace").setup({
-        lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
-        lastplace_ignore_filetype = {
-          "gitcommit", "gitrebase", "svn", "hgcommit",
-        },
-        lastplace_open_folds = true,
-      })
-    end,
-  },
-  {
     "folke/todo-comments.nvim",
     event = "BufRead",
     config = function()
@@ -114,8 +92,9 @@ lvim.plugins = {
     end,
   },
   -- themes
-  -- { "rose-pine/neovim" },
-  -- { "folke/tokyonight.nvim" }
+  { "dracula/vim" },
+  { "rose-pine/neovim" },
+  { "folke/tokyonight.nvim" },
   { "EdenEast/nightfox.nvim" },
   { "loctvl842/monokai-pro.nvim" },
   {
@@ -130,6 +109,12 @@ lvim.plugins = {
   }
 }
 
+lvim.builtin.bufferline.options.indicator.style = "underline"
+lvim.builtin.alpha.active = true
+lvim.builtin.alpha.mode = "dashboard"
+lvim.builtin.terminal.active = true
+lvim.builtin.nvimtree.setup.view.side = "left"
+lvim.builtin.treesitter.auto_install = true
 lvim.builtin.treesitter.matchup.enable = true
 lvim.builtin.telescope.defaults.layout_config.width = 0.95
 lvim.builtin.telescope.defaults.layout_config.height = 0.95
