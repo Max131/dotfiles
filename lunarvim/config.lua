@@ -92,23 +92,20 @@ lvim.plugins = {
     end,
   },
   -- themes
-  { "dracula/vim" },
-  { "rose-pine/neovim" },
+  -- { "dracula/vim" },
+  -- { "rose-pine/neovim" },
   { "folke/tokyonight.nvim" },
-  { "EdenEast/nightfox.nvim" },
+  -- { "EdenEast/nightfox.nvim" },
+  { "olimorris/onedarkpro.nvim" },
   { "loctvl842/monokai-pro.nvim" },
-  {
-    "windwp/nvim-ts-autotag",
-    config = function()
-      require("nvim-ts-autotag").setup()
-    end,
-  },
-  {
-    "catppuccin/nvim",
-    name = "catppuccin"
-  }
+  { "windwp/nvim-ts-autotag", },
+  -- {
+  --   "catppuccin/nvim",
+  --   name = "catppuccin"
+  -- }
 }
 
+require("nvim-ts-autotag").setup()
 lvim.builtin.bufferline.options.indicator.style = "underline"
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
@@ -121,7 +118,7 @@ lvim.builtin.telescope.defaults.layout_config.height = 0.95
 lvim.builtin.telescope.defaults.layout_config.prompt_position = "top"
 lvim.builtin.telescope.defaults.layout_strategy = "horizontal"
 lvim.builtin.treesitter.autotag = {
-  enable = true
+  enable = false
 }
 lvim.builtin.telescope.defaults.file_ignore_patterns = {
   "%.webp$",
@@ -147,4 +144,4 @@ lvim.lsp.buffer_mappings.normal_mode["gr"] = {
 -- }
 -- lvim.builtin.lualine.style = "default"
 
-lvim.colorscheme = "monokai-pro-octagon"
+lvim.colorscheme = "onedark"
