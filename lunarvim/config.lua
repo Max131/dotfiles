@@ -7,6 +7,7 @@
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.relativenumber = false
+vim.opt.termguicolors = true
 
 -- general
 lvim.log.level = "info"
@@ -94,15 +95,15 @@ lvim.plugins = {
   -- themes
   -- { "dracula/vim" },
   -- { "rose-pine/neovim" },
-  { "folke/tokyonight.nvim" },
+  -- { "folke/tokyonight.nvim" },
   -- { "EdenEast/nightfox.nvim" },
-  { "olimorris/onedarkpro.nvim" },
-  { "loctvl842/monokai-pro.nvim" },
-  { "windwp/nvim-ts-autotag", },
   -- {
   --   "catppuccin/nvim",
   --   name = "catppuccin"
   -- }
+  { "olimorris/onedarkpro.nvim" },
+  { "loctvl842/monokai-pro.nvim" },
+  { "windwp/nvim-ts-autotag", },
 }
 
 require("nvim-ts-autotag").setup()
@@ -133,15 +134,21 @@ lvim.builtin.telescope.defaults.file_ignore_patterns = {
 lvim.lsp.buffer_mappings.normal_mode["gr"] = {
   "<cmd>Telescope lsp_references<CR>", "Go References"
 }
--- lvim.builtin.which_key.mappings["gr"] = {
--- }
--- lvim.builtin.which_key.mappings["f"] = {
---   name = "Find",
---   f = { "<cmd>Telescope find_files<cr>", "Files" },
---   o = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
---   w = { "<cmd>Telescope live_grep<cr>", "Live grep" },
---   i = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "In buffer" }
--- }
+lvim.builtin.which_key.mappings["gr"] = {
+}
+lvim.builtin.which_key.mappings["f"] = {
+  name = "Find",
+  f = { "<cmd>Telescope find_files<cr>", "Files" },
+  o = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
+  w = { "<cmd>Telescope live_grep<cr>", "Live grep" },
+  i = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "In buffer" }
+}
 -- lvim.builtin.lualine.style = "default"
 
 lvim.colorscheme = "onedark"
+
+local linters = require "lvim.lsp.null-ls.linters"
+linters.setup {
+  { command = "eslint",    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "svelte", "vue", "jsx" } },
+  { command = "stylelint", filetypes = { "css", "scss", "sugarcss", "stylus", "postcss" } }
+}
