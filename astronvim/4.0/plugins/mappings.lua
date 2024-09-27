@@ -8,10 +8,6 @@ return {
         ["<C-Right>"] = false,
         ["<A-Up>"] = { ":m.-2<CR>" },
         ["<A-Down>"] = { ":m.+1<CR>" },
-        -- ["<S-l>"] = {
-        --   function() require("astrocore.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
-        --   desc = "Next buffer",
-        -- },
         ["<S-l>"] = {
           function() require("astrocore.buffer").nav(1) end,
           desc = "Next buffer",
@@ -32,10 +28,19 @@ return {
           function() require("astrocore.buffer").move(vim.v.count > 0 and vim.v.count or 1) end,
           desc = "Move buffer tab right",
         },
+        ["<A-Right>"] = {
+          function() require("astrocore.buffer").move(vim.v.count > 0 and vim.v.count or 1) end,
+          desc = "Move buffer tab right",
+        },
         ["<b"] = {
           function() require("astrocore.buffer").move(-(vim.v.count > 0 and vim.v.count or 1)) end,
           desc = "Move buffer tab left",
         },
+        ["<A-Left>"] = {
+          function() require("astrocore.buffer").move(-(vim.v.count > 0 and vim.v.count or 1)) end,
+          desc = "Move buffer tab left",
+        },
+        ["gr"] = { ":Telescope lsp_references<CR>" },
       },
       i = {
         ["clg"] = { "console.log()<ESC><Left>a", desc = "Console.log" },

@@ -19,7 +19,7 @@ return {
   { import = "astrocommunity.motion.hop-nvim" },
   { import = "astrocommunity.motion.vim-matchup" },
   { import = "astrocommunity.pack.astro" },
-  { import = "astrocommunity.pack.bash" },
+  -- { import = "astrocommunity.pack.bash" },
   { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.pack.php" },
